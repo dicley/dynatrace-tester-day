@@ -3,6 +3,7 @@ package testcases;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -40,7 +41,10 @@ public class LoginPageTest extends TestBase{
 		String actualResult = Perform.getText(driver,LoginPageObject.getLoginButton());
 		Helper.assertEquals("Login",actualResult,1,true);
 
+		LoginPageObject.checkLoginButton();
+
 		LoginPageObject.login(jsonReader.userName,jsonReader.password);
+
 
 		System.out.println("###############################################################################################");
 		Reporter.Log( "################################## Test Case Passed  ##########################################");
