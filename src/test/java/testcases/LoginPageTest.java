@@ -10,16 +10,17 @@ import base.TestBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import pages.InventoryPage;
 import pages.LoginPage;
 import utilities.Helper;
 import utilities.JsonDataReader;
 import utilities.Perform;
-import utilities.Reporter;
 
 public class LoginPageTest extends TestBase{
 
-	LoginPage LoginPageObject;
 	JsonDataReader jsonReader;
+	LoginPage LoginPageObject;
+	InventoryPage InventoryPageObject;
 
 	String URL = utilities.LoadProperties.userData.getProperty("SiteURL");
 
@@ -28,7 +29,7 @@ public class LoginPageTest extends TestBase{
 		openBrowser(URL);
 		jsonReader = new JsonDataReader();
 		LoginPageObject = new LoginPage(driver);
-
+		InventoryPageObject = new InventoryPage(driver);
 	}
 
 	@Severity(SeverityLevel.NORMAL)
@@ -40,10 +41,11 @@ public class LoginPageTest extends TestBase{
 		String actualResult = Perform.getText(driver,LoginPageObject.getLoginButton());
 		Helper.assertEquals("Login",actualResult,1,true);
 
+		LoginPageObject.checkLoginButton();
+
 		LoginPageObject.login(jsonReader.userName,jsonReader.password);
 
-		System.out.println("###############################################################################################");
-		Reporter.Log( "################################## Test Case Passed  ##########################################");
-		System.out.println("###############################################################################################");
+		String actualProductResult = Perform.getText(driver,InventoryPageObject.getProductsHeaderTitle());
+		Helper.assertEquals("PRODUCTS",actualProductResult,1,true);
 	}
 }

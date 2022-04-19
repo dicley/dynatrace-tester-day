@@ -26,4 +26,8 @@ public class LoginPage extends PageBase{
 		Perform.click(driver,loginBtn);
 	}
 
+	public boolean checkLoginButton(){
+		return Perform.isElementDisplayed(driver,loginBtn);
+	}
+
 }
