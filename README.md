@@ -2,12 +2,12 @@
 <img src="src\test\resources\TestDataFiles\dynatrace.png" style="display:block; margin-left:auto; margin-right:auto;"/>
 
 # Automation FrameWork
-FrameWork using Selenium WebDriver with Java , Gradle , TestNG and POM design pattern
+FrameWork using Selenium WebDriver with Java , Maven , TestNG and POM design pattern
 We are using DDT frameworks in the project with allure report
 
 ### Tech stach:
 - Java
-- Gradle
+- Maven
 - TestNG 
 - DDT
 - WebdriverManager
